@@ -20,11 +20,16 @@ public class HelloWorldBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		message = "Hello World";
-		this.people = new ArrayList<>();
-		this.filteredPeople = new ArrayList<>();
-		people.add(new Person("Ali", "Meftahi", 70));
-		people.add(new Person("Ahmad", "Afshari", 30));
-		people.add(new Person("Navid", "Mehrabi", 28));
+		this.people = this.getData();
+		this.filteredPeople = this.getData();
+	}
+
+	private List<Person> getData () {
+		List<Person> persons = new ArrayList<>();
+		persons.add(new Person("Ali", "Meftahi", 70));
+		persons.add(new Person("Ahmad", "Afshari", 30));
+		persons.add(new Person("Navid", "Mehrabi", 28));
+		return new ArrayList<>(persons);
 	}
 
 	public void updateGrowl() {
