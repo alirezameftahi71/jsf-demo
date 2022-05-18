@@ -7,36 +7,26 @@
 	  lang="#{p:language()}" xml:lang="#{p:language()}">
 <h:head>
 	<f:facet name="first">
-		<ui:fragment rendered="#{facesContext.application.projectStage eq 'Production'}">
-			<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-93461466-1"></script>
-			<script>
-				window.dataLayer = window.dataLayer || [];
-
-				function gtag() {
-					dataLayer.push(arguments);
-				}
-
-				gtag('js', new Date());
-				gtag('config', 'UA-93461466-1');
-			</script>
-		</ui:fragment>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 	</f:facet>
-	<title>PrimeFaces Showcase</title>
+	<h:outputStylesheet library="css" name="primeflex.min.css"/>
+	<h:outputStylesheet library="css" name="layout.css"/>
 
 	<ui:insert name="head"/>
 
+	<title>
+		<ui:insert name="title"/>
+	</title>
 </h:head>
 
 <body>
 <f:view>
+	<ui:include src="main-toolbar.xhtml"/>
 	<div class="layout-wrapper">
-		<h:form>
-			<p:spinner/>
-		</h:form>
+		<ui:insert name="content"/>
 	</div>
 </f:view>
 </body>

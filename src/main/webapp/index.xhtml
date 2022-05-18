@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				template="/resources/layout/master.xhtml">
+	<ui:define name="title">Datatable Page</ui:define>
+	<ui:define name="content">
+		<h:form id="form" styleClass="h-full">
+			<p:growl id="messages" showDetail="true"/>
+
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton type="button" value="New" icon="pi pi-file" styleClass="mr-2"
+									 onclick="PF('af_searchPanel').toggle();"/>
+					<p:commandButton type="button" value="Open" icon="pi pi-folder-open"/>
+
+					<i class="pi pi-bars px-2"/>
+
+					<p:commandButton type="button" title="Save" icon="pi pi-save" styleClass="ui-button-help mr-2"/>
+					<p:commandButton type="button" title="Print" icon="pi pi-print" styleClass="mr-2"/>
+					<p:commandButton type="button" title="Delete" icon="pi pi-trash"/>
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:menuButton value="Options">
+						<p:menuitem value="Save" action="#{helloworld.updateGrowl}" update="messages"
+									icon="pi pi-save"/>
+						<p:menuitem value="Update" action="#{helloworld.updateGrowl}" update="messages"
+									icon="pi pi-refresh"/>
+						<p:menuitem value="Delete" action="#{helloworld.updateGrowl}" ajax="false"
+									icon="pi pi-times"/>
+						<p:menuitem value="Homepage" url="http://www.primefaces.org" icon="pi pi-home"/>
+					</p:menuButton>
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panel id="advanced-filter-panel" toggleable="true" widgetVar="af_searchPanel" collapsed="true">
+				<p:panelGrid id="af_panelGrid">
+					<p:row>
+						<p:column>
+							<p:outputLabel for="af_md" value="manageddomainlist" styleClass="mr-2"/>
+							<p:inputText id="af_md" value="#{helloworld.message}"/>
+						</p:column>
+
+						<p:column>
+							<p:outputLabel for="af_category" value="category" styleClass="mr-2"/>
+							<p:selectOneMenu id="af_category" value="#{helloworld.categoryType}" required="false">
+								<f:selectItem itemLabel="selectone"/>
+							</p:selectOneMenu>
+						</p:column>
+
+						<p:column>
+							<p:outputLabel for="af_physical" value="physical" styleClass="mr-2"/>
+							<p:selectOneMenu id="af_physical" value="#{helloworld.categoryType}" required="false">
+								<f:selectItem itemLabel="selectone"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:panel>
+
+			<div class="card" style="height: calc(100% - 70px)">
+				<p:dataTable id="people" var="person" value="#{helloworld.people}" rowKey="#{person.uid}"
+							 showGridlines="true" styleClass="h-full" selection="#{helloworld.selectedPerson}"
+							 selectionMode="single" resizableColumns="true" paginator="true" paginatorPosition="bottom"
+							 filteredValue="#{helloworld.filteredPeople}" stripedRows="true" allowUnsorting="true"
+							 rows="20" sortMode="multiple" reflow="true">
+
+					<p:column headerText="First Name" sortBy="#{person.fName}"
+							  filterBy="#{person.fName}">
+						<h:outputText value="#{person.fName}"/>
+					</p:column>
+
+					<p:column headerText="Last Name" sortBy="#{person.lName}"
+							  filterBy="#{person.lName}">
+						<h:outputText value="#{person.lName}"/>
+					</p:column>
+
+					<p:column headerText="Age" sortBy="#{person.age}"
+							  filterBy="#{person.age}">
+						<h:outputText value="#{person.age}"/>
+					</p:column>
+
+				</p:dataTable>
+				<p:contextMenu for="people">
+					<p:menuitem value="View" icon="pi pi-search"/>
+					<p:menuitem value="Delete" icon="pi pi-times"/>
+				</p:contextMenu>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

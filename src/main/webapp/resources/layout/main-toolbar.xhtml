@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:form>
+		<p:menubar>
+			<p:menuitem outcome="/index.xhtml" styleClass="p-0" containerStyleClass="p-0">
+				<p:graphicImage name="irib-logo-white.png" library="images" style="width: 48px"/>
+			</p:menuitem>
+
+			<p:menuitem value="Dashboard" icon="pi pi-fw pi-home" onclick="PF('dashboardSidebar').show()"/>
+
+			<p:submenu label="Assets" icon="pi pi-fw pi-database">
+				<p:menuitem value="Items List"/>
+				<p:menuitem value="Connectivity Management"/>
+				<p:menuitem value="Managed Domain"/>
+				<p:menuitem value="Model Library"/>
+				<p:menuitem value="Discovery Items"/>
+				<p:menuitem value="Management Interfaces"/>
+				<p:menuitem value="Entity Specification"/>
+				<p:menuitem value="External Network"/>
+				<p:menuitem value="Applications"/>
+				<p:menuitem value="Virtualization"/>
+				<p:menuitem value="Website"/>
+			</p:submenu>
+
+			<p:submenu label="Visualization" icon="pi pi-fw pi-chart-line">
+				<p:menuitem value="2D"/>
+				<p:menuitem value="3D"/>
+			</p:submenu>
+
+			<p:submenu label="Events" icon="pi pi-fw pi-bell">
+				<p:menuitem value="List"/>
+				<p:menuitem value="Tree"/>
+				<p:menuitem value="Threshold"/>
+				<p:menuitem value="Event Severity Profiles"/>
+				<p:menuitem value="Event Trigger"/>
+				<p:menuitem value="Sent Notifications"/>
+			</p:submenu>
+
+			<p:submenu label="Change Management" icon="pi pi-fw pi-book">
+				<p:menuitem value="Request"/>
+				<p:menuitem value="Request Log"/>
+				<p:menuitem value="Change Log"/>
+			</p:submenu>
+
+			<p:submenu label="Performance &amp; Capacity" icon="pi pi-fw pi-bolt">
+				<p:menuitem value="Measurement"/>
+				<p:menuitem value="Resource Capacity"/>
+				<p:menuitem value="Graph"/>
+				<p:menuitem value="Graph Template"/>
+				<p:menuitem value="Network Flow"/>
+			</p:submenu>
+
+			<p:submenu label="Remote Operation" icon="pi pi-fw pi-at">
+				<p:menuitem value="Terminal"/>
+				<p:menuitem value="Resources Configuration"/>
+			</p:submenu>
+
+			<p:submenu label="Administration" icon="pi pi-fw pi-briefcase">
+				<p:menuitem value="User Management"/>
+				<p:menuitem value="Role Management"/>
+				<p:menuitem value="Audit Trail"/>
+				<p:menuitem value="MIBS"/>
+				<p:menuitem value="System Setting"/>
+			</p:submenu>
+
+			<f:facet name="options">
+				<div class="ui-input-icon-left mr-2">
+					<i class="pi pi-fw pi-search"/>
+					<p:inputText placeholder="Search"/>
+				</div>
+				<p:commandButton icon="pi pi-user" onclick="PF('userSidebar').show()"
+								 styleClass="ui-button-outlined"/>
+			</f:facet>
+		</p:menubar>
+
+		<p:sidebar widgetVar="dashboardSidebar" position="left">
+			<h3>Left Sidebar</h3>
+		</p:sidebar>
+
+		<p:sidebar widgetVar="userSidebar" position="right">
+			<h3>Right Sidebar</h3>
+		</p:sidebar>
+
+	</h:form>
+</ui:composition>
