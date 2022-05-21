@@ -1,0 +1,3 @@
+.people-table .ui-datatable-tablewrapper {
+	height: calc(100% - 70px) !important;
+}

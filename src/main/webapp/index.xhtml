@@ -5,6 +5,9 @@
 				xmlns:ui="http://java.sun.com/jsf/facelets"
 				template="/resources/layout/master.xhtml">
 	<ui:define name="title">Datatable Page</ui:define>
+	<ui:define name="head">
+		<h:outputStylesheet library="css" name="home.css"/>
+	</ui:define>
 	<ui:define name="content">
 
 		<p:growl id="messages" showDetail="true"/>
@@ -62,7 +65,7 @@
 
 		<div class="card" style="height: calc(100% - 70px)">
 			<p:dataTable id="people" var="person" value="#{helloworld.people}" rowKey="#{person.uid}"
-						 showGridlines="true" styleClass="h-full" selection="#{helloworld.selectedPerson}"
+						 showGridlines="true" styleClass="h-full people-table" selection="#{helloworld.selectedPerson}"
 						 selectionMode="single" resizableColumns="true" paginator="true" paginatorPosition="bottom"
 						 filteredValue="#{helloworld.filteredPeople}" stripedRows="true" allowUnsorting="true"
 						 rows="20" sortMode="multiple" reflow="true">
